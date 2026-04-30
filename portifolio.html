@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Igor de abreu - Portfólio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        header {
+            background-color: #020617;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: #38bdf8;
+            margin: 0 10px;
+            text-decoration: none;
+            padding: 8px 18px;          /* cria o tamanho interno do botão (vertical horizontal) */
+            border: 1px solid #38bdf8;  /* contorno/borda do botão (espessura estilo cor) */
+            border-radius: 6px;         /* arredonda os cantos do botão em 6px */
+            transition: all 0.3s ease;  /* faz qualquer mudança de estilo acontecer de forma suave em 0.3s */
+            display: inline-block;      /* permite que o padding funcione corretamente em links <a> */
+        }
+
+        nav a:hover {
+            background-color: #38bdf8;  /* muda a cor de fundo ao passar o mouse */
+            color: #0f172a;             /* muda a cor do texto ao passar o mouse */
+            box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8; /* cria brilho neon ao redor do botão (deslocamento-x deslocamento-y espalhamento cor) */
+        }
+
+        section {
+            padding: 40px;
+        }
+
+        .card {
+            background-color: #020617;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        /* ===== ACCORDION ===== */
+
+        /* Botão que o usuário clica para abrir/fechar a categoria */
+        .accordion-btn {
+            width: 100%;
+            background-color: #020617;
+            color: #38bdf8;
+            padding: 15px 20px;
+            border: 1px solid #38bdf8;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;                /* muda o cursor para mãozinha ao passar em cima */
+            transition: all 0.3s ease;      /* animação suave */
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between; /* empurra a seta para o lado direito */
+            align-items: center;
+        }
+
+        .accordion-btn:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8; /* mesmo brilho neon dos botões do nav */
+        }
+
+        /* A setinha que indica aberto/fechado */
+        .accordion-btn .seta {
+            transition: transform 0.3s ease; /* anima a rotação da seta */
+        }
+
+        /* Quando o botão tem a classe "ativo", a seta gira 180 graus */
+        .accordion-btn.ativo .seta {
+            transform: rotate(180deg);
+        }
+
+        /* O conteúdo que fica escondido/visível */
+        .accordion-conteudo {
+            display: none;              /* começa escondido */
+            background-color: #020617;
+            border: 1px solid #1e3a5f;
+            border-radius: 0 0 8px 8px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Quando o conteúdo tem a classe "aberto", ele aparece */
+        .accordion-conteudo.aberto {
+            display: block;
+        }
+
+        /* Linha separadora entre projetos dentro da mesma categoria */
+        .separador {
+            border: none;
+            border-top: 1px solid #1e3a5f; /* linha fina azul escura */
+            margin: 20px 0;
+        }
+
+        /* Card de cada projeto individual */
+        .projeto {
+            display: flex;
+            gap: 15px;              /* espaço entre a imagem e o texto */
+            align-items: flex-start;
+        }
+
+        /* Área reservada para imagem ou vídeo futuramente */
+        .projeto-midia {
+            width: 140px;
+            height: 90px;
+            background-color: #1e293b;  /* cor de placeholder enquanto não tem imagem */
+            border-radius: 6px;
+            flex-shrink: 0;             /* impede que a imagem encolha */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 12px;
+        }
+
+        .projeto-info h4 {
+            margin: 0 0 8px 0;
+            color: #e2e8f0;
+        }
+
+        .projeto-info p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* Links do projeto (GitHub, itch.io, download...) */
+        .projeto-links a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 13px;
+            margin-right: 10px;
+            border: 1px solid #38bdf8;
+            padding: 3px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .projeto-links a:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 8px #38bdf8;
+        }
+
+        /* ===== FIM ACCORDION ===== */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #020617;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Igor de Abreu</h1>
+    <p>Estudante de Ciência da Computação | Foco em Cibersegurança, analise de dados, Dev de jogos e Administrativo</p>
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section id="sobre">
+    <h2>Sobre mim</h2>
+    <p>
+        Sou estudante de Ciência da Computação com interesse em cibersegurança, analise de dados, desenvolvimento de jogos e Administrativo, procurando oportunidades como aprendiz ou estagiario.
+        com o objetivo de adquirir experiência prática, desenolver habilidades profissionais e contribuir com o crescimento da empresa e aprendizado.
+    </p>
+</section>
+
+<section id="projetos">
+    <h2>Projetos</h2>
+
+    <!-- ===== CATEGORIA: Projetos em C ===== -->
+
+    <!-- Botão da categoria — o onclick chama a função toggleAccordion passando este botão -->
+    <button class="accordion-btn" onclick="toggleAccordion(this)">
+        Projetos em C
+        <span class="seta">▼</span>
+    </button>
+
+    <!-- Conteúdo que aparece ao clicar -->
+    <div class="accordion-conteudo">
+
+        <!-- Projeto 1 -->
+        <div class="projeto">
+            <div class="projeto-midia">imagem/vídeo</div> <!-- substitua futuramente por <img> ou <video> -->
+            <div class="projeto-info">
+                <h4>Nome do Projeto</h4>
+                <p>Descrição breve do que o projeto faz.</p>
+                <div class="projeto-links">
+                    <!-- <a href="LINK_DO_GITHUB">GitHub</a> -->
+                    <!-- <a href="LINK_DO_ITCH">itch.io</a> -->
+                </div>
+            </div>
+        </div>
+
+        <hr class="separador"> <!-- linha separadora entre projetos -->
+
+        <!-- Projeto 2 -->
+        <div class="projeto">
+            <div class="projeto-midia">imagem/vídeo</div>
+            <div class="projeto-info">
+                <h4>Nome do Projeto 2</h4>
+                <p>Descrição breve do que o projeto faz.</p>
+                <div class="projeto-links">
+                    <!-- <a href="LINK_DO_GITHUB">GitHub</a> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== CATEGORIA: Projetos em Excel ===== -->
+
+    <button class="accordion-btn" onclick="toggleAccordion(this)">
+        Projetos em Excel
+        <span class="seta">▼</span>
+    </button>
+
+    <div class="accordion-conteudo">
+
+        <div class="projeto">
+            <div class="projeto-midia">imagem/vídeo</div>
+            <div class="projeto-info">
+                <h4>Nome do Projeto</h4>
+                <p>Descrição breve do que o projeto faz.</p>
+                <div class="projeto-links">
+                    <!-- <a href="LINK_DOWNLOAD">Download</a> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Para adicionar uma nova categoria, copie o bloco do botão + conteúdo acima e troque o nome -->
+
+</section>
+
+<section id="cursos">
+    <h2>Cursos</h2>
+    <div class="card">
+        <p>Curso de Cibersegurança — Introdução a cibersegurança</p>
+    </div>
+</section>
+
+<section id="contato">
+    <h2>Contato</h2>
+    <p>Email: igordeabreuengracia@hotmail.com</p>
+    <p>GitHub: https://github.com/dev-igorabreu</p>
+</section>
+
+<footer>
+    <p>© 2026 - Igor de Abreu</p>
+</footer>
+
+<script>
+    // Função chamada ao clicar em qualquer botão de categoria
+    function toggleAccordion(btn) {
+
+        // Pega o conteúdo logo abaixo do botão clicado
+        const conteudo = btn.nextElementSibling;
+
+        // Verifica se este conteúdo já está aberto
+        const estaAberto = conteudo.classList.contains("aberto");
+
+        // Fecha todos os acordeões abertos (comportamento: um de cada vez)
+        document.querySelectorAll(".accordion-conteudo").forEach(c => c.classList.remove("aberto"));
+        document.querySelectorAll(".accordion-btn").forEach(b => b.classList.remove("ativo"));
+
+        // Se não estava aberto, abre ele (se já estava aberto, o passo acima já fechou)
+        if (!estaAberto) {
+            conteudo.classList.add("aberto");
+            btn.classList.add("ativo");
+        }
+    }
+</script>
+
+</body>
+</html>

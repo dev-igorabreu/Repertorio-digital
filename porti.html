@@ -21,10 +21,25 @@
             margin: 0;
         }
 
+        nav {
+            margin-top: 15px;
+        }
+
         nav a {
             color: #38bdf8;
             margin: 0 10px;
             text-decoration: none;
+            padding: 8px 18px;          /* cria o tamanho interno do botão (vertical horizontal) */
+            border: 1px solid #38bdf8;  /* contorno/borda do botão (espessura estilo cor) */
+            border-radius: 6px;         /* arredonda os cantos do botão em 6px */
+            transition: all 0.3s ease;  /* faz qualquer mudança de estilo acontecer de forma suave em 0.3s */
+            display: inline-block;      /* permite que o padding funcione corretamente em links <a> */
+        }
+
+        nav a:hover {
+            background-color: #38bdf8;  /* muda a cor de fundo ao passar o mouse */
+            color: #0f172a;             /* muda a cor do texto ao passar o mouse */
+            box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8; /* cria brilho neon ao redor do botão (deslocamento-x deslocamento-y espalhamento cor) */
         }
 
         section {
@@ -69,22 +84,17 @@
 
 <section id="projetos">
     <h2>Projetos</h2>
-
     <div class="card">
         <h3>Projetos em desenvolvimento...</h3>
         <p>Em breve mais projetos aparecerão aqui.</p>
     </div>
-
-
 </section>
 
 <section id="cursos">
     <h2>Cursos</h2>
-
     <div class="card">
         <p>Curso de Cibersegurança — Introdução a cibersegurança</p>
     </div>
-
 </section>
 
 <section id="contato">

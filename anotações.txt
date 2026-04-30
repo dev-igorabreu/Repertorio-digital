@@ -1,0 +1,39 @@
+border — cria o contorno/borda do botão ✅
+border-radius — arredonda os cantos (não inclina, é curvatura mesmo) ✅
+transition — faz a animação ser suave ao passar o mouse ✅
+display: inline-block — faz o padding funcionar corretamente no link, já que <a> por padrão é inline e não respeita padding vertical direito ✅
+box-shadow — não é transição de cor, é uma sombra/brilho em volta do elemento. Os valores 0 0 10px significam: sem deslocamento horizontal, sem deslocamento vertical, 10px de espalhamento. É isso que cria o efeito neon ✅
+
+A transição de cor em si é feita pelo background-color e color dentro do :hover, e o transition só garante que essa mudança aconteça de forma gradual e não instantaneo
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+O botão (accordion-btn)
+O botão usa display: flex com justify-content: space-between — isso empurra o texto pro lado esquerdo e a setinha ▼ pro lado direito automaticamente.
+O onclick="toggleAccordion(this)" chama a função JavaScript passando o próprio botão como referência — o this significa "eu mesmo".
+
+2. O conteúdo (accordion-conteudo)
+Começa com display: none — ou seja, invisível por padrão. Quando recebe a classe aberto, vira display: block e aparece. É o CSS controlando o que aparece ou não baseado em classes.
+
+3. A setinha
+Ela fica dentro do botão com a classe seta. Quando o botão recebe a classe ativo, o CSS faz:
+css.accordion-btn.ativo .seta {
+    transform: rotate(180deg);
+}
+Isso gira ela 180 graus — sem JavaScript, só CSS mesmo.
+
+4. A função toggleAccordion
+Ela faz 3 coisas em ordem:
+
+Pega o conteúdo logo abaixo do botão com nextElementSibling — que significa "o elemento irmão seguinte no HTML"
+Verifica se já está aberto com classList.contains("aberto")
+Fecha todos os acordeões removendo as classes aberto e ativo de todos
+Se o clicado não estava aberto, adiciona as classes de volta só nele
+
+A lógica do if (!estaAberto) é o pulo do gato — se você clicar num que já está aberto, ele fecha e não reabre, porque o ! inverte o valor.
+
+5. O separador
+Só uma tag <hr> com CSS removendo a borda padrão e colocando uma linha fina azul escura por cima — simples assim.
